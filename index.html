@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#006e16",
+                    "inverse-on-surface": "#2e3037",
+                    "tertiary-container": "#00fb40",
+                    "on-tertiary-fixed": "#002203",
+                    "surface-container": "#1d2026",
+                    "surface": "#10131a",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#e1e2eb",
+                    "on-primary-container": "#006970",
+                    "secondary-fixed-dim": "#ecb2ff",
+                    "primary-container": "#00f0ff",
+                    "surface-container-high": "#272a31",
+                    "error": "#ffb4ab",
+                    "inverse-primary": "#006970",
+                    "surface-bright": "#363940",
+                    "on-primary-fixed": "#002022",
+                    "on-surface-variant": "#b9cacb",
+                    "on-tertiary-fixed-variant": "#00530e",
+                    "outline": "#849495",
+                    "tertiary-fixed": "#72ff70",
+                    "surface-container-highest": "#32353c",
+                    "on-tertiary": "#003907",
+                    "on-primary-fixed-variant": "#004f54",
+                    "primary": "#dbfcff",
+                    "outline-variant": "#3b494b",
+                    "secondary": "#ecb2ff",
+                    "surface-container-lowest": "#0b0e14",
+                    "on-primary": "#00363a",
+                    "secondary-fixed": "#f8d8ff",
+                    "primary-fixed-dim": "#00dbe9",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#191c22",
+                    "secondary-container": "#cf5cff",
+                    "on-background": "#e1e2eb",
+                    "on-error": "#690005",
+                    "on-secondary": "#520071",
+                    "surface-tint": "#00dbe9",
+                    "on-secondary-container": "#480063",
+                    "inverse-surface": "#e1e2eb",
+                    "primary-fixed": "#7df4ff",
+                    "background": "#10131a",
+                    "tertiary": "#ddffd3",
+                    "tertiary-fixed-dim": "#00e639",
+                    "surface-variant": "#32353c",
+                    "on-secondary-fixed-variant": "#74009f",
+                    "on-secondary-fixed": "#320047",
+                    "surface-dim": "#10131a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b0e14;
+            color: #e1e2eb;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(39, 42, 49, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+        .active-glow {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4), 0 0 5px rgba(0, 251, 64, 0.2);
+            border-color: rgba(0, 240, 255, 0.5);
+        }
+        .tech-monospace {
+            font-family: 'Space Grotesk', monospace;
+        }
+        @keyframes flow-pan {
+            0% { transform: scale(1.1) translateX(0%); }
+            50% { transform: scale(1.1) translateX(-5%); }
+            100% { transform: scale(1.1) translateX(0%); }
+        }
+        .animate-flow {
+            animation: flow-pan 20s ease-in-out infinite;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0e14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00f0ff33;
+        }
+        #strategic-modal.hidden {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .mobile-nav-scroll {
+                scrollbar-width: none;
+            }
+            .mobile-nav-scroll::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden pb-12">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 px-4 md:px-6 py-3 md:py-4 rtl bg-[#10131a]/80 backdrop-blur-xl border-b border-[#00f0ff]/20 font-['Space_Grotesk'] tracking-widest text-right">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
+<div class="flex items-center justify-between md:justify-start gap-4 md:gap-6">
+<div class="text-lg md:text-2xl font-black text-[#dbfcff] uppercase tracking-tighter">
+                مساحة <span class="text-[#00f0ff] drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]">زيرو قرافتي</span>
+</div>
+<div class="flex items-center gap-2 md:hidden">
+<button class="material-symbols-outlined text-[#00f0ff] p-2 hover:bg-[#00f0ff]/10 rounded-full transition-all" onclick="document.querySelector('aside').classList.toggle('translate-x-full')">menu</button>
+</div>
+</div>
+<nav class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 mobile-nav-scroll whitespace-nowrap">
+<a class="bg-[#00f0ff]/20 text-[#00f0ff] px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-[#00f0ff]/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all duration-300 text-xs md:text-sm" href="#">📜 الوثيقة</a>
+<a class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#">⌛ التاريخ </a>
+<a class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#">🌿 المذهب</a>
+<a class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#">💡 الأفكار</a>
+</nav>
+<div class="hidden md:flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-[#191c22]/50 border border-[#00f0ff]/20 rounded-lg px-4 py-1 text-sm focus:outline-none focus:border-[#00f0ff] text-right" placeholder="بحث تكتيكي..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-[#00f0ff] p-2 hover:bg-[#00f0ff]/10 rounded-full transition-all">notifications_active</button>
+<button class="material-symbols-outlined text-[#00f0ff] p-2 hover:bg-[#00f0ff]/10 rounded-full transition-all">settings</button>
+<button class="material-symbols-outlined text-[#00f0ff] p-2 hover:bg-[#00f0ff]/10 rounded-full transition-all">account_circle</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed right-0 top-0 h-full flex flex-col pt-32 md:pt-20 pb-4 z-40 bg-[#0b0e14]/90 md:bg-[#0b0e14]/40 backdrop-blur-2xl border-l border-[#00f0ff]/10 w-64 font-['Space_Grotesk'] text-sm tracking-wide rtl transition-transform duration-300 translate-x-full md:translate-x-0">
+<div class="px-6 py-4 mb-4 border-b border-[#00f0ff]/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 border border-primary flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a futuristic strategic commander with digital HUD overlay cyber dark aesthetic cool cyan lighting 3d render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT1BGlMiNcSCMbGXeEWspIgzLXwIr07LrBL21pojU41MdLz5gWGgrWYZ9vWu445n2F5AHZyfWRKtGAowya4PH-CwuaYyyVnvWZyXpheY2kjIobJXX8u-RKZI4xi1Nw2brDxwqU7bRYFMkdkFnKSeZLw9zJFI5A6zq61Vd6Wjpfr7pnuvWp6IiHy-MEzupAgqY09lFUrVMeLX_rWbcJUTQ4Q_G2AXS_BBqDUrVFcKU910ZQ6P9BK5MI0Z0UDACpfeWatgARwJ8QVoQ"/>
+</div>
+<div>
+<p class="font-bold text-primary">ZGE القائد</p>
+<p class="text-[10px] text-primary/60">المستوى الاستراتيجي</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 text-[#dbfcff]/40 hover:bg-[#191c22]/50 transition-colors" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span>الفهرس الشجري</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#dbfcff]/40 hover:bg-[#191c22]/50 transition-colors" href="#">
+<span class="material-symbols-outlined">lightbulb</span>
+<span>الأفكار العامة</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#dbfcff]/40 hover:bg-[#191c22]/50 transition-colors" href="#">
+<span class="material-symbols-outlined">psychology_alt</span>
+<span>العصف الذهني</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 bg-[#00f0ff]/10 text-[#00f0ff] border-r-4 border-[#00fb40]" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span>التطوير النشط</span>
+</a>
+</nav>
+<div class="mt-auto px-6 pb-8 space-y-1">
+<a class="flex items-center gap-4 py-3 text-[#dbfcff]/40 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">tune</span>
+<span>الإعدادات</span>
+</a>
+<a class="flex items-center gap-4 py-3 text-[#dbfcff]/40 hover:text-red-400 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>تسجيل الخروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:mr-64 pt-32 md:pt-24 px-4 md:px-8 pb-12">
+<!-- Tab 1: Sovereign Document -->
+<section class="max-w-5xl mx-auto mb-16">
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-8">
+<div>
+<h1 class="text-2xl md:text-4xl font-headline font-bold text-primary tracking-tight mb-2">📜 وثيقة المشروع السيادية</h1>
+<p class="text-on-surface-variant font-label tracking-widest text-xs md:text-sm uppercase">STRATEGIC MANIFESTO V2.0 / TOP SECRET</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:brightness-110 transition-all w-full md:w-auto">
+<span class="material-symbols-outlined text-sm">edit</span>
+                تحرير الوثيقة
+            </button>
+</div>
+<div class="glass-panel p-6 md:p-8 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<div class="prose prose-invert max-w-none space-y-6 text-on-surface/90 leading-relaxed text-right">
+<p class="text-lg md:text-xl font-medium text-tertiary">الرؤية الأساسية:</p>
+<p class="text-sm md:text-base">يهدف مشروع ZGE إلى خلق بيئة تطويرية متكاملة تتجاوز النظم التقليدية، حيث يتم دمج "الحدس البرمجي" مع الأتمتة الذكية. نحن لا نبني مجرد منصة، بل ننشئ كياناً رقمياً قادراً على النمو الذاتي من خلال خوارزميات التدفق (Flow Algorithms).</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 my-8">
+<div class="border-r border-primary/20 pr-6">
+<h4 class="text-primary font-bold mb-2">الأهداف الاستراتيجية:</h4>
+<ul class="list-disc list-inside space-y-2 text-xs md:text-sm text-on-surface-variant">
+<li>تحقيق صفرية الاحتكاك في كتابة الكود.</li>
+<li>بناء فهرس شجري حي لجميع العمليات الذهنية.</li>
+<li>أتمتة اتخاذ القرار التقني بناءً على "المذهب".</li>
+</ul>
+</div>
+<div class="border-r border-secondary/20 pr-6">
+<h4 class="text-secondary font-bold mb-2">النطاق التشغيلي:</h4>
+<ul class="list-disc list-inside space-y-2 text-xs md:text-sm text-on-surface-variant">
+<li>الأنظمة الموزعة عالية التوفر.</li>
+<li>واجهات المستخدم التفاعلية من الجيل القادم.</li>
+<li>تحليلات البيانات العصبية للمشاريع.</li>
+</ul>
+</div>
+</div>
+<p class="italic text-on-surface-variant/70 border-t border-white/5 pt-6 text-center text-xs md:text-sm">تم التوقيع إلكترونياً من قبل القائد الاستراتيجي - 2024</p>
+</div>
+</div>
+</section>
+<!-- Tab 2: Development History -->
+<section class="mb-16">
+<h2 class="text-xl md:text-2xl font-headline font-bold text-primary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined">history</span> ⌛ تاريخ التطوير (المراحل الأربعة)
+        </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Phase 1 (Active) -->
+<div class="glass-panel p-6 rounded-xl border-r-4 border-primary active-glow relative">
+<div class="text-primary font-bold tech-monospace mb-4 text-sm md:text-base">PHASE_01 / التأسيس</div>
+<div class="space-y-4">
+<div class="group cursor-pointer hover:bg-primary/5 p-3 rounded-lg border border-transparent hover:border-primary/20 transition-all">
+<div class="flex justify-between items-center text-[10px] text-on-surface-variant mb-1">
+<span>STEP_01</span>
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</div>
+<p class="font-bold text-xs md:text-sm">هيكلة النواة المركزية</p>
+<div class="mt-2 text-[10px] flex flex-wrap gap-1 opacity-60">
+<span class="bg-surface-container-high px-2 py-0.5 rounded">Docker</span>
+<span class="bg-surface-container-high px-2 py-0.5 rounded">Go-Lang</span>
+</div>
+</div>
+<div class="bg-primary/5 p-3 rounded-lg border border-primary/20">
+<div class="flex justify-between items-center text-[10px] text-primary mb-1">
+<span>STEP_02</span>
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+</div>
+<p class="font-bold text-xs md:text-sm">تعريف بروتوكول ZGE</p>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-2 text-[10px] text-tertiary">
+<span class="w-1 h-1 rounded-full bg-tertiary"></span> وثيقة المصافحة
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Phase 2 (Locked) -->
+<div class="glass-panel p-6 rounded-xl border-r-4 border-secondary/20 grayscale opacity-40 relative">
+<span class="material-symbols-outlined absolute top-4 left-4 text-secondary/40 text-sm">lock</span>
+<div class="text-secondary font-bold tech-monospace mb-4 text-sm md:text-base">PHASE_02 / التوسع</div>
+<div class="space-y-4">
+<div class="bg-surface-container-low p-3 rounded-lg">
+<p class="text-[10px] text-secondary/60 mb-1">STEP_01</p>
+<p class="font-bold text-xs md:text-sm">نظام واجهات التدفق</p>
+</div>
+</div>
+</div>
+<!-- Phases 3 & 4 (Mobile Stacking) -->
+<div class="glass-panel p-6 rounded-xl border-r-4 border-tertiary/20 grayscale opacity-40 relative">
+<span class="material-symbols-outlined absolute top-4 left-4 text-tertiary/40 text-sm">lock</span>
+<div class="text-tertiary font-bold tech-monospace mb-4 text-sm md:text-base">PHASE_03 / الذكاء</div>
+<div class="h-20 flex items-center justify-center border border-dashed border-tertiary/20 rounded-lg">
+<p class="text-tertiary/40 text-[10px] tech-monospace">PENDING</p>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl border-r-4 border-white/5 grayscale opacity-40 relative">
+<span class="material-symbols-outlined absolute top-4 left-4 text-white/20 text-sm">lock</span>
+<div class="text-on-surface/40 font-bold tech-monospace mb-4 text-sm md:text-base">PHASE_04 / السيادة</div>
+<div class="h-20 bg-surface-container-high/30 rounded"></div>
+</div>
+</div>
+</section>
+<!-- Tab 3: Flow Coding Methodology -->
+<section class="mb-16">
+<h2 class="text-xl md:text-2xl font-headline font-bold text-primary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined">psychology</span> 🌿 مذهب Flow Coding (الحاسة السادسة)
+        </h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="glass-panel p-6 rounded-xl bg-gradient-to-br from-tertiary/5 to-transparent text-right">
+<h3 class="text-tertiary font-bold text-lg mb-4">ما هو الـ Flow Coding؟</h3>
+<p class="text-on-surface-variant leading-relaxed mb-4 text-sm md:text-base">
+                        هو مذهب برمجي يعتمد على الوصول إلى حالة من الاندماج الكامل بين فكر المطور وهيكل الكود، حيث لا يعود الكود مجرد سطور بل "تدفق" منطقي مستمر.
+                    </p>
+<div class="bg-surface-container-lowest/50 p-4 rounded-lg border-r-2 border-tertiary">
+<p class="text-xs md:text-sm font-bold text-primary mb-2 italic">"الحاسة السادسة للمبرمج:"</p>
+<p class="text-[11px] md:text-xs text-on-surface-variant">القدرة على استشعار الخطأ المنطقي قبل تشغيل الكود بشكل غريزي.</p>
+</div>
+</div>
+<div class="h-48 md:h-64 rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 grayscale hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover animate-flow" data-alt="abstract digital flow representation flowing cyan and green lines coding symbols dark background cinematic lighting 8k" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4DkCA1h1D_lI8yOlut4yLRLWmJ4lJk_icGrLs7D_TfKgvNbVPYwiJxNmoLr46Pha7qoUTbznZa7df63I9MTZAXQDXb2A7EZNkCa4ejw2oJ6l0lNVvUw-MA4BUa9M4FMFmyWsf0hQfdWqADZ5vCQkxMGY5mSsE5ZidZMFhFaZ63wsMLeyKdZWQ1FJ9Xn-4tby-Hz0d6JydEOeL6WAVdTGsNApRt5C6mK8LmSVNJumQOk4YMw4gzJ35Qub2VvyAp9RDFLLpEeZzDak"/>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-xl overflow-x-auto">
+<table class="w-full text-right text-xs md:text-sm whitespace-nowrap md:whitespace-normal">
+<thead class="bg-primary/10 border-b border-primary/20">
+<tr>
+<th class="p-4 font-bold text-primary">المنهجية</th>
+<th class="p-4 font-bold text-primary">العجز</th>
+<th class="p-4 font-bold text-tertiary">ZGE (Flow)</th>
+<th class="p-4 font-bold text-tertiary text-center">الحالة</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="p-4 font-medium">Agile</td>
+<td class="p-4 text-on-surface-variant">تشتت التركيز</td>
+<td class="p-4 text-tertiary">تواصل صامت</td>
+<td class="p-4 text-center">✅</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="p-4 font-medium">TDD</td>
+<td class="p-4 text-on-surface-variant">التقيد المسبق</td>
+<td class="p-4 text-tertiary">اختبار غريزي</td>
+<td class="p-4 text-center">✅</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="p-4 font-medium">Clean Code</td>
+<td class="p-4 text-on-surface-variant">الهوس الشكلي</td>
+<td class="p-4 text-tertiary">الجمال من الكفاءة</td>
+<td class="p-4 text-center">✅</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Tab 4: 2x2 Idea Grid (Stacked on Mobile) -->
+<section class="mb-16">
+<h2 class="text-xl md:text-2xl font-headline font-bold text-primary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined">grid_view</span> 💡 أفكار المشروع (المصفوفة الاستراتيجية)
+        </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 h-auto">
+<!-- Interactive Card 1 -->
+<button class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-between border-t border-primary/20 hover:neon-glow-primary transition-all group text-right" onclick="document.getElementById('strategic-modal').classList.remove('hidden')">
+<div class="w-full">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="tech-monospace text-[10px] text-primary/40">TREE_INDEX</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">الفهرس الشجري</h3>
+<p class="text-on-surface-variant text-xs md:text-sm leading-relaxed">تنظيم هرمي لجميع مكونات المشروع، يتيح الوصول السريع للبيانات عبر روابط عصبية مشفرة.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center w-full">
+<span class="text-[10px] tech-monospace uppercase">Status: Indexed</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-[-4px] transition-transform">arrow_back</span>
+</div>
+</button>
+<!-- Interactive Card 2 -->
+<button class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-between border-t border-secondary/20 hover:neon-glow-primary transition-all group text-right" onclick="document.getElementById('strategic-modal').classList.remove('hidden')">
+<div class="w-full">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-3xl md:text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="tech-monospace text-[10px] text-secondary/40">GENERAL_IDEAS</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold mb-3 group-hover:text-secondary transition-colors">الأفكار العامة</h3>
+<p class="text-on-surface-variant text-xs md:text-sm leading-relaxed">مستودع الأفكار الخام غير المصنفة، مكان للابتكار الحر دون قيود تقنية في المرحلة الأولى.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center w-full">
+<span class="text-[10px] tech-monospace uppercase">Status: Collecting</span>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-[-4px] transition-transform">arrow_back</span>
+</div>
+</button>
+<!-- Interactive Card 3 -->
+<button class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-between border-t border-tertiary/20 hover:neon-glow-primary transition-all group text-right" onclick="document.getElementById('strategic-modal').classList.remove('hidden')">
+<div class="w-full">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-3xl md:text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">psychology_alt</span>
+<span class="tech-monospace text-[10px] text-tertiary/40">BRAINSTORM</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold mb-3 group-hover:text-tertiary transition-colors">العصف الذهني</h3>
+<p class="text-on-surface-variant text-xs md:text-sm leading-relaxed">أفكار تمت فلترتها وتحويلها إلى فرضيات عمل قابلة للاختبار والتحليل التقني العميق.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center w-full">
+<span class="text-[10px] tech-monospace uppercase">Status: Analytical</span>
+<span class="material-symbols-outlined text-tertiary group-hover:translate-x-[-4px] transition-transform">arrow_back</span>
+</div>
+</button>
+<!-- Interactive Card 4 -->
+<button class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-between border-t border-primary/20 bg-primary/5 hover:neon-glow-primary transition-all group text-right" onclick="document.getElementById('strategic-modal').classList.remove('hidden')">
+<div class="w-full">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary animate-pulse" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="tech-monospace text-[10px] text-primary/40">ACTIVE_DEV</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">التطوير النشط</h3>
+<p class="text-on-surface-variant text-xs md:text-sm leading-relaxed">الأفكار التي هي قيد التنفيذ حالياً، مع مراجعة مباشرة للكود وتتبع حي للأخطاء.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5 flex justify-between items-center w-full">
+<span class="text-[10px] tech-monospace uppercase text-tertiary">Status: Deploying...</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-[-4px] transition-transform">arrow_back</span>
+</div>
+</button>
+</div>
+</section>
+</main>
+<!-- Full-screen Strategic Overlay (Modal) -->
+<div class="fixed inset-0 z-[100] hidden bg-[#0b0e14]/98 backdrop-blur-3xl p-4 md:p-8 overflow-y-auto" id="strategic-modal">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-center mb-8 md:12 border-b border-[#00f0ff]/20 pb-6">
+<h2 class="text-xl md:text-3xl font-headline font-bold text-[#dbfcff]">رادار التخطيط الاستراتيجي</h2>
+<button class="material-symbols-outlined text-3xl md:text-4xl text-primary hover:rotate-90 transition-transform" onclick="document.getElementById('strategic-modal').classList.add('hidden')">close</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pb-12">
+<!-- Tree Index -->
+<div class="glass-panel p-6 md:p-8 rounded-2xl border-primary/30">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-lg md:text-xl font-bold text-primary">المخطط الشجري</h3>
+<span class="material-symbols-outlined text-primary">account_tree</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-low/50 p-4 rounded border-r-2 border-primary">
+<p class="text-xs md:text-sm font-bold">01 // وحدة الرأس (Header)</p>
+</div>
+<div class="bg-surface-container-low/30 p-4 rounded opacity-60">
+<p class="text-xs md:text-sm font-bold">02 // الشريط الجانبي (Sidebar)</p>
+</div>
+</div>
+</div>
+<!-- Quick Ideas -->
+<div class="glass-panel p-6 md:p-8 rounded-2xl border-secondary/30">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-lg md:text-xl font-bold text-secondary">شرارات عشوائية</h3>
+<span class="material-symbols-outlined text-secondary">bolt</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 bg-surface-container-high/40 p-3 rounded">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-xs md:text-sm">تحسين استجابة الرسوم البيانية</span>
+</div>
+</div>
+</div>
+<!-- Active Dev -->
+<div class="glass-panel p-6 md:p-8 rounded-2xl border-primary/50 bg-primary/5 md:col-span-2">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-lg md:text-xl font-bold text-primary">قيد التنفيذ النشط</h3>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
+<span class="text-[10px] text-tertiary font-mono uppercase">Live</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center gap-4 p-3 bg-[#0b0e14] rounded border-l-2 border-primary">
+<span class="material-symbols-outlined text-primary text-xl">terminal</span>
+<div>
+<p class="text-xs font-bold">نظام الملاحة الزجاجي</p>
+<p class="text-[9px] text-primary/60">H-001</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 bg-[#0b0e14] rounded border-l-2 border-primary">
+<span class="material-symbols-outlined text-primary text-xl">hub</span>
+<div>
+<p class="text-xs font-bold">خوارزمية تنبؤ المسار</p>
+<p class="text-[9px] text-primary/60">H-042</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Footer (Pinned) -->
+<footer class="fixed bottom-0 w-full z-50 bg-[#0b0e14]/40 backdrop-blur-md border-t border-white/5 py-2 px-4 md:px-6 flex justify-between items-center text-[8px] md:text-[9px] tech-monospace text-on-surface-variant/40 tracking-widest uppercase pointer-events-none">
+<div class="truncate">V: 2.0.1-Beta | Flow Coding v1.0</div>
+<div class="flex items-center gap-2 md:gap-4 whitespace-nowrap">
+<span class="hidden sm:inline">Sync Status: Local-First</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary/40 animate-pulse"></span>
+</div>
+</footer>
+<!-- Contextual FAB -->
+<button class="fixed bottom-12 left-6 md:left-8 w-14 h-14 md:w-16 md:h-16 bg-primary text-on-primary rounded-full shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-transform z-50" onclick="document.getElementById('strategic-modal').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-2xl md:text-3xl">grid_view</span>
+</button>
+</body></html>
