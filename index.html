@@ -128,6 +128,41 @@
                 display: none;
             }
         }
+        /* Extreme Density for Mobile < 480px */
+        @media (max-width: 480px) {
+            .p-4, .p-6, .p-8 { padding: 0.5rem !important; }
+            .m-4, .m-6, .m-8 { margin: 0.5rem !important; }
+            .gap-4, .gap-6, .gap-8 { gap: 0.5rem !important; }
+            .mb-8, .mb-16 { margin-bottom: 1rem !important; }
+            body, p, span, div, li, td { font-size: 10px !important; }
+            h1, h2, h3, h4 { font-size: 12px !important; }
+        }
+        /* Dotted Leaders for Book Index */
+        .dotted-leader {
+            display: flex;
+            align-items: baseline;
+            width: 100%;
+            gap: 4px;
+        }
+        .dotted-leader::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px dotted rgba(225, 226, 235, 0.2);
+            margin-bottom: 4px;
+        }
+        .sync-active {
+            animation: sync-pulse 2s ease-in-out;
+        }
+        @keyframes sync-pulse {
+            0%, 100% { background-color: rgba(0, 251, 64, 0.4); box-shadow: none; }
+            50% { background-color: #00fb40; box-shadow: 0 0 10px #00fb40; }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 240, 255, 0.2);
+        }
     </style>
 </head>
 <body class="overflow-x-hidden pb-12">
@@ -143,10 +178,10 @@
 </div>
 </div>
 <nav class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 mobile-nav-scroll whitespace-nowrap">
-<a class="bg-[#00f0ff]/20 text-[#00f0ff] px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-[#00f0ff]/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all duration-300 text-xs md:text-sm" href="#">📜 الوثيقة</a>
-<a class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#">⌛ التاريخ </a>
-<a class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#">🌿 المذهب</a>
-<a class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#">💡 الأفكار</a>
+<a id="nav-doc" class="bg-[#00f0ff]/20 text-[#00f0ff] px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-[#00f0ff]/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all duration-300 text-xs md:text-sm" href="#" onclick="switchTab('section-doc')">📜 الوثيقة</a>
+<a id="nav-history" class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#" onclick="switchTab('section-history')">⌛ التاريخ </a>
+<a id="nav-methodology" class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#" onclick="switchTab('section-methodology')">🌿 المذهب</a>
+<a id="nav-ideas" class="text-[#dbfcff]/50 hover:text-[#dbfcff] px-3 md:px-4 py-1 md:py-1.5 transition-all duration-300 hover:bg-[#00f0ff]/5 text-xs md:text-sm" href="#" onclick="switchTab('section-ideas')">💡 الأفكار</a>
 </nav>
 <div class="hidden md:flex items-center gap-4">
 <div class="relative hidden sm:block">
@@ -203,7 +238,7 @@
 <!-- Main Content Area -->
 <main class="md:mr-64 pt-32 md:pt-24 px-4 md:px-8 pb-12">
 <!-- Tab 1: Sovereign Document -->
-<section class="max-w-5xl mx-auto mb-16">
+<section id="section-doc" class="max-w-5xl mx-auto mb-16">
 <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-8">
 <div>
 <h1 class="text-2xl md:text-4xl font-headline font-bold text-primary tracking-tight mb-2">📜 وثيقة المشروع السيادية</h1>
@@ -242,7 +277,7 @@
 </div>
 </section>
 <!-- Tab 2: Development History -->
-<section class="mb-16">
+<section id="section-history" class="mb-16 hidden">
 <h2 class="text-xl md:text-2xl font-headline font-bold text-primary mb-8 flex items-center gap-3">
 <span class="material-symbols-outlined">history</span> ⌛ تاريخ التطوير (المراحل الأربعة)
         </h2>
@@ -303,7 +338,7 @@
 </div>
 </section>
 <!-- Tab 3: Flow Coding Methodology -->
-<section class="mb-16">
+<section id="section-methodology" class="mb-16 hidden">
 <h2 class="text-xl md:text-2xl font-headline font-bold text-primary mb-8 flex items-center gap-3">
 <span class="material-symbols-outlined">psychology</span> 🌿 مذهب Flow Coding (الحاسة السادسة)
         </h2>
@@ -360,11 +395,11 @@
 </div>
 </section>
 <!-- Tab 4: 2x2 Idea Grid (Stacked on Mobile) -->
-<section class="mb-16">
+<section id="section-ideas" class="mb-16 hidden">
 <h2 class="text-xl md:text-2xl font-headline font-bold text-primary mb-8 flex items-center gap-3">
 <span class="material-symbols-outlined">grid_view</span> 💡 أفكار المشروع (المصفوفة الاستراتيجية)
         </h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 h-auto">
+<div class="grid grid-cols-2 gap-2 md:gap-8 h-auto">
 <!-- Interactive Card 1 -->
 <button class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-between border-t border-primary/20 hover:neon-glow-primary transition-all group text-right" onclick="document.getElementById('strategic-modal').classList.remove('hidden')">
 <div class="w-full">
@@ -436,60 +471,58 @@
 <button class="material-symbols-outlined text-3xl md:text-4xl text-primary hover:rotate-90 transition-transform" onclick="document.getElementById('strategic-modal').classList.add('hidden')">close</button>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pb-12">
-<!-- Tree Index -->
-<div class="glass-panel p-6 md:p-8 rounded-2xl border-primary/30">
-<div class="flex items-center justify-between mb-8">
-<h3 class="text-lg md:text-xl font-bold text-primary">المخطط الشجري</h3>
-<span class="material-symbols-outlined text-primary">account_tree</span>
+<!-- Container 1: Technical Book Index -->
+<div id="cont-book-index" class="glass-panel p-4 md:p-8 rounded-2xl border-primary/30 overflow-hidden flex flex-col">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-sm md:text-xl font-bold text-primary">1.0 الفهرس الكتابي</h3>
+        <button onclick="addIndexSection()" class="material-symbols-outlined text-primary hover:bg-primary/10 rounded-full p-1">add_circle</button>
+    </div>
+    <div id="index-tree-root" class="space-y-2 overflow-y-auto max-h-[300px] custom-scrollbar">
+        <!-- Dynamic Content -->
+    </div>
 </div>
-<div class="space-y-4">
-<div class="bg-surface-container-low/50 p-4 rounded border-r-2 border-primary">
-<p class="text-xs md:text-sm font-bold">01 // وحدة الرأس (Header)</p>
+
+<!-- Container 2: Random Sparks -->
+<div id="cont-sparks" class="glass-panel p-4 md:p-8 rounded-2xl border-secondary/30 flex flex-col">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-sm md:text-xl font-bold text-secondary">2.0 شرارات عشوائية</h3>
+        <span class="material-symbols-outlined text-secondary">bolt</span>
+    </div>
+    <div class="flex gap-2 mb-4">
+        <input type="text" id="spark-input" class="bg-surface-container-low border border-secondary/20 rounded px-2 py-1 text-xs flex-1 focus:outline-none focus:border-secondary" placeholder="فكرة خاطفة...">
+        <button onclick="addSpark()" class="bg-secondary/20 text-secondary px-3 py-1 rounded text-xs font-bold hover:bg-secondary/30">إضافة</button>
+    </div>
+    <div id="sparks-list" class="space-y-2 overflow-y-auto max-h-[200px] custom-scrollbar">
+        <!-- Dynamic Content -->
+    </div>
 </div>
-<div class="bg-surface-container-low/30 p-4 rounded opacity-60">
-<p class="text-xs md:text-sm font-bold">02 // الشريط الجانبي (Sidebar)</p>
+
+<!-- Container 3: Classified Ideas -->
+<div id="cont-classified-ideas" class="glass-panel p-4 md:p-8 rounded-2xl border-tertiary/30 flex flex-col">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-sm md:text-xl font-bold text-tertiary">3.0 الأفكار المصنفة</h3>
+        <span class="material-symbols-outlined text-tertiary">category</span>
+    </div>
+    <div class="space-y-3">
+        <input type="text" id="idea-title" class="bg-surface-container-low border border-tertiary/20 rounded w-full px-2 py-1 text-xs focus:outline-none focus:border-tertiary" placeholder="عنوان الفكرة">
+        <select id="idea-category-select" class="bg-surface-container-low border border-tertiary/20 rounded w-full px-2 py-1 text-xs focus:outline-none focus:border-tertiary text-on-surface">
+            <!-- Dynamic Options from Index -->
+        </select>
+        <button onclick="addClassifiedIdea()" class="w-full bg-tertiary/20 text-tertiary py-1.5 rounded text-xs font-bold hover:bg-tertiary/30">حفظ في المصفوفة</button>
+    </div>
 </div>
-</div>
-</div>
-<!-- Quick Ideas -->
-<div class="glass-panel p-6 md:p-8 rounded-2xl border-secondary/30">
-<div class="flex items-center justify-between mb-8">
-<h3 class="text-lg md:text-xl font-bold text-secondary">شرارات عشوائية</h3>
-<span class="material-symbols-outlined text-secondary">bolt</span>
-</div>
-<div class="space-y-3">
-<div class="flex items-center gap-4 bg-surface-container-high/40 p-3 rounded">
-<div class="w-2 h-2 rounded-full bg-secondary"></div>
-<span class="text-xs md:text-sm">تحسين استجابة الرسوم البيانية</span>
-</div>
-</div>
-</div>
-<!-- Active Dev -->
-<div class="glass-panel p-6 md:p-8 rounded-2xl border-primary/50 bg-primary/5 md:col-span-2">
-<div class="flex items-center justify-between mb-8">
-<h3 class="text-lg md:text-xl font-bold text-primary">قيد التنفيذ النشط</h3>
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
-<span class="text-[10px] text-tertiary font-mono uppercase">Live</span>
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div class="flex items-center gap-4 p-3 bg-[#0b0e14] rounded border-l-2 border-primary">
-<span class="material-symbols-outlined text-primary text-xl">terminal</span>
-<div>
-<p class="text-xs font-bold">نظام الملاحة الزجاجي</p>
-<p class="text-[9px] text-primary/60">H-001</p>
-</div>
-</div>
-<div class="flex items-center gap-4 p-3 bg-[#0b0e14] rounded border-l-2 border-primary">
-<span class="material-symbols-outlined text-primary text-xl">hub</span>
-<div>
-<p class="text-xs font-bold">خوارزمية تنبؤ المسار</p>
-<p class="text-[9px] text-primary/60">H-042</p>
-</div>
-</div>
-</div>
-</div>
+
+<!-- Container 4: Active Development -->
+<div id="cont-active-dev" class="glass-panel p-4 md:p-8 rounded-2xl border-primary/50 bg-primary/5 flex flex-col">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-sm md:text-xl font-bold text-primary">4.0 التطوير النشط</h3>
+        <select id="active-dev-filter" onchange="filterActiveDev()" class="bg-transparent border-none text-[10px] text-tertiary font-mono uppercase focus:ring-0 cursor-pointer">
+            <!-- Dynamic Options -->
+        </select>
+    </div>
+    <div id="active-dev-list" class="grid grid-cols-1 gap-2 overflow-y-auto max-h-[200px] custom-scrollbar">
+        <!-- Dynamic Content -->
+    </div>
 </div>
 </div>
 </div>
@@ -505,4 +538,374 @@
 <button class="fixed bottom-12 left-6 md:left-8 w-14 h-14 md:w-16 md:h-16 bg-primary text-on-primary rounded-full shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-transform z-50" onclick="document.getElementById('strategic-modal').classList.toggle('hidden')">
 <span class="material-symbols-outlined text-2xl md:text-3xl">grid_view</span>
 </button>
+
+<script>
+    // --- Data Engine & Persistence ---
+    const ZGE_FileSystem = {
+        "Project_Manifesto.md": "الرؤية الأساسية: يهدف مشروع ZGE إلى خلق بيئة تطويرية متكاملة تتجاوز النظم التقليدية، حيث يتم دمج 'الحدس البرمجي' مع الأتمتة الذكية. نحن لا نبني مجرد منصة، بل ننشئ كياناً رقمياً قادراً على النمو الذاتي من خلال خوارزميات التدفق (Flow Algorithms).",
+        "Architecture.txt": "Distributed systems, High availability, Reactive UI components, Neural analytics."
+    };
+
+    let state = {
+        manifesto: ZGE_FileSystem["Project_Manifesto.md"],
+        index: [
+            { id: "1", title: "وحدة الرأس", code: "Header", children: [
+                { id: "1.1", title: "شريط التنقل", code: "Navbar", children: [] }
+            ] },
+            { id: "2", title: "الشريط الجانبي", code: "Sidebar", children: [] }
+        ],
+        sparks: [
+            { id: Date.now(), text: "تحسين استجابة الرسوم البيانية", done: false }
+        ],
+        ideas: [],
+        history: [
+            { id: "p1", title: "التأسيس", steps: [
+                { id: "s1", title: "هيكلة النواة المركزية", tools: ["Docker", "Go-Lang"], events: ["خطوة 1", "خطوة 2", "خطوة 3", "خطوة 4"] }
+            ] }
+        ],
+        activeSectionId: "section-doc"
+    };
+
+    function autoSync() {
+        localStorage.setItem("ZGE_State", JSON.stringify(state));
+        const dot = document.querySelector('footer .rounded-full');
+        if (dot) {
+            dot.classList.add('sync-active');
+            setTimeout(() => dot.classList.remove('sync-active'), 2000);
+        }
+    }
+
+    function loadState() {
+        const saved = localStorage.getItem("ZGE_State");
+        if (saved) {
+            state = JSON.parse(saved);
+        }
+    }
+
+    // --- UI Update Utilities ---
+    function renderAll() {
+        renderManifesto();
+        renderHistory();
+        renderIndex();
+        renderSparks();
+        renderClassifiedIdeas();
+        renderActiveDev();
+        updateNavStyles();
+    }
+
+    // --- SPA Routing ---
+    function switchTab(tabId) {
+        state.activeSectionId = tabId;
+        const sections = ['section-doc', 'section-history', 'section-methodology', 'section-ideas'];
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden', id !== tabId);
+        });
+        updateNavStyles();
+        autoSync();
+    }
+
+    function updateNavStyles() {
+        const navMap = {
+            'section-doc': 'nav-doc',
+            'section-history': 'nav-history',
+            'section-methodology': 'nav-methodology',
+            'section-ideas': 'nav-ideas'
+        };
+        Object.values(navMap).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.remove('bg-[#00f0ff]/20', 'text-[#00f0ff]', 'rounded-full', 'border', 'border-[#00f0ff]/40', 'shadow-[0_0_10px_rgba(0,240,255,0.2)]');
+                el.classList.add('text-[#dbfcff]/50', 'hover:text-[#dbfcff]');
+            }
+        });
+        const activeId = navMap[state.activeSectionId];
+        const activeEl = document.getElementById(activeId);
+        if (activeEl) {
+            activeEl.classList.add('bg-[#00f0ff]/20', 'text-[#00f0ff]', 'rounded-full', 'border', 'border-[#00f0ff]/40', 'shadow-[0_0_10px_rgba(0,240,255,0.2)]');
+            activeEl.classList.remove('text-[#dbfcff]/50', 'hover:text-[#dbfcff]');
+        }
+    }
+
+    // --- Components Implementation ---
+
+    // Sovereign Document
+    function renderManifesto() {
+        const contentArea = document.querySelector('#section-doc .prose');
+        if (contentArea) {
+            contentArea.innerHTML = `<p>${state.manifesto}</p>`;
+        }
+    }
+
+    function toggleEditManifesto() {
+        const btn = document.querySelector('#section-doc button');
+        const contentArea = document.querySelector('#section-doc .prose p');
+        if (!contentArea) return;
+
+        const isEditing = contentArea.getAttribute('contenteditable') === 'true';
+        if (isEditing) {
+            state.manifesto = contentArea.innerText;
+            contentArea.setAttribute('contenteditable', 'false');
+            contentArea.classList.remove('border', 'border-primary/50', 'p-2');
+            btn.innerHTML = `<span class="material-symbols-outlined text-sm">edit</span> تحرير الوثيقة`;
+            autoSync();
+        } else {
+            contentArea.setAttribute('contenteditable', 'true');
+            contentArea.classList.add('border', 'border-primary/50', 'p-2');
+            contentArea.focus();
+            btn.innerHTML = `<span class="material-symbols-outlined text-sm">save</span> حفظ الوثيقة`;
+        }
+    }
+    // Bind button
+    document.querySelector('#section-doc button').onclick = toggleEditManifesto;
+
+    // Technical Book Index
+    function renderIndex() {
+        const container = document.getElementById('index-tree-root');
+        if (!container) return;
+        container.innerHTML = "";
+
+        function buildTree(items, parentContainer, level = 0) {
+            items.forEach((item) => {
+                const itemEl = document.createElement('div');
+                itemEl.className = "group mb-1";
+                const numbering = item.id.includes('.') ? item.id : item.id + ".0";
+                itemEl.innerHTML = `
+                    <div class="flex flex-col">
+                        <div class="dotted-leader py-1 cursor-pointer hover:bg-white/5 transition-colors px-2 rounded">
+                            <span class="text-[10px] md:text-xs font-bold text-on-surface whitespace-nowrap">${numbering} ${item.title}</span>
+                            ${item.children && item.children.length > 0 ? '<span class="material-symbols-outlined text-[14px] text-primary/40 ml-2">unfold_more</span>' : ''}
+                        </div>
+                        <div class="mr-4 mt-1 space-y-1 hidden" id="child-of-${item.id.replace(/\./g, '_')}"></div>
+                    </div>
+                `;
+                itemEl.querySelector('.dotted-leader').onclick = (e) => {
+                    const childCont = document.getElementById(`child-of-${item.id.replace(/\./g, '_')}`);
+                    if (childCont) childCont.classList.toggle('hidden');
+                };
+                parentContainer.appendChild(itemEl);
+                if (item.children && item.children.length > 0) {
+                    const childCont = document.getElementById(`child-of-${item.id.replace(/\./g, '_')}`);
+                    buildTree(item.children, childCont, level + 1);
+                }
+            });
+        }
+        buildTree(state.index, container);
+        updateCategorySelects();
+    }
+
+    function addIndexSection() {
+        const title = prompt("عنوان القسم الجديد:");
+        if (title) {
+            const nextId = (state.index.length + 1).toString();
+            state.index.push({ id: nextId, title: title, children: [] });
+            renderIndex();
+            autoSync();
+        }
+    }
+
+    // Sparks (To-Do)
+    function renderSparks() {
+        const list = document.getElementById('sparks-list');
+        if (!list) return;
+        list.innerHTML = state.sparks.map(spark => `
+            <div class="flex items-center gap-3 bg-surface-container-high/40 p-2 rounded group">
+                <input type="checkbox" ${spark.done ? 'checked' : ''} onchange="toggleSpark(${spark.id})" class="rounded border-secondary/40 bg-transparent text-secondary focus:ring-0">
+                <span class="text-xs flex-1 ${spark.done ? 'line-through opacity-50' : ''}">${spark.text}</span>
+                <button onclick="deleteSpark(${spark.id})" class="material-symbols-outlined text-xs text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">delete</button>
+            </div>
+        `).join('');
+    }
+
+    function addSpark() {
+        const input = document.getElementById('spark-input');
+        if (input && input.value) {
+            state.sparks.push({ id: Date.now(), text: input.value, done: false });
+            input.value = "";
+            renderSparks();
+            autoSync();
+        }
+    }
+
+    function toggleSpark(id) {
+        const spark = state.sparks.find(s => s.id === id);
+        if (spark) {
+            spark.done = !spark.done;
+            renderSparks();
+            autoSync();
+        }
+    }
+
+    function deleteSpark(id) {
+        state.sparks = state.sparks.filter(s => s.id !== id);
+        renderSparks();
+        autoSync();
+    }
+
+    // Classified Ideas
+    function updateCategorySelects() {
+        const selects = ['idea-category-select', 'active-dev-filter'];
+        selects.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                const options = state.index.map(item => `<option value="${item.id}">${item.title}</option>`).join('');
+                el.innerHTML = options + (id === 'active-dev-filter' ? '<option value="all">الكل</option>' : '');
+            }
+        });
+    }
+
+    function renderClassifiedIdeas() {
+        // Not used for list display here, see active dev
+    }
+
+    function addClassifiedIdea() {
+        const titleInput = document.getElementById('idea-title');
+        const catSelect = document.getElementById('idea-category-select');
+        if (titleInput.value && catSelect.value) {
+            state.ideas.push({
+                id: Date.now(),
+                title: titleInput.value,
+                categoryId: catSelect.value
+            });
+            titleInput.value = "";
+            renderActiveDev();
+            autoSync();
+        }
+    }
+
+    // Active Dev (Filtered)
+    function renderActiveDev() {
+        const list = document.getElementById('active-dev-list');
+        const filter = document.getElementById('active-dev-filter').value;
+        if (!list) return;
+
+        const filtered = filter === 'all' ? state.ideas : state.ideas.filter(i => i.categoryId === filter);
+
+        list.innerHTML = filtered.map(idea => `
+            <div class="flex items-center gap-4 p-3 bg-[#0b0e14] rounded border-l-2 border-primary">
+                <span class="material-symbols-outlined text-primary text-xl">terminal</span>
+                <div>
+                    <p class="text-xs font-bold">${idea.title}</p>
+                    <p class="text-[9px] text-primary/60">${state.index.find(c => c.id === idea.categoryId)?.title || ''}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function filterActiveDev() {
+        renderActiveDev();
+    }
+
+    // Development History
+    function renderHistory() {
+        const container = document.querySelector('#section-history .grid');
+        if (!container) return;
+        container.innerHTML = state.history.map(phase => `
+            <div class="glass-panel p-4 md:p-6 rounded-xl border-r-4 border-primary active-glow relative">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-primary font-bold tech-monospace text-xs md:text-base">${phase.title}</div>
+                    <div class="flex gap-1">
+                        <button onclick="editPhase('${phase.id}')" class="material-symbols-outlined text-xs opacity-40 hover:opacity-100">edit</button>
+                        <button onclick="deletePhase('${phase.id}')" class="material-symbols-outlined text-xs text-red-400 opacity-40 hover:opacity-100">delete</button>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    ${phase.steps.map(step => `
+                        <div class="bg-primary/5 p-3 rounded-lg border border-primary/20">
+                            <div class="flex justify-between items-center text-[10px] text-primary mb-1">
+                                <span>${step.title}</span>
+                                <div class="flex gap-1">
+                                    <button onclick="editStep('${phase.id}', '${step.id}')" class="material-symbols-outlined text-[12px] opacity-40">edit</button>
+                                    <button onclick="deleteStep('${phase.id}', '${step.id}')" class="material-symbols-outlined text-[12px] text-red-400 opacity-40">delete</button>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-[10px] flex flex-wrap gap-1 opacity-60">
+                                ${step.tools.map(tool => `<span class="bg-surface-container-high px-2 py-0.5 rounded">${tool}</span>`).join('')}
+                            </div>
+                            <div class="mt-2 space-y-1">
+                                ${step.events ? step.events.map(event => `
+                                    <div class="flex items-center gap-2 text-[9px] text-tertiary/70">
+                                        <span class="w-1 h-1 rounded-full bg-tertiary"></span> ${event}
+                                    </div>
+                                `).join('') : ''}
+                            </div>
+                        </div>
+                    `).join('')}
+                    <button onclick="addStep('${phase.id}')" class="w-full border border-dashed border-primary/20 rounded py-2 text-[10px] text-primary/40 hover:bg-primary/5">+ خطوة جديدة</button>
+                </div>
+            </div>
+        `).join('') + `
+            <button onclick="addPhase()" class="glass-panel p-6 rounded-xl border-2 border-dashed border-primary/20 flex items-center justify-center text-primary/40 hover:bg-primary/5 transition-all">
+                <span class="material-symbols-outlined mr-2">add_circle</span> إضافة مرحلة
+            </button>
+        `;
+    }
+
+    function addPhase() {
+        const title = prompt("عنوان المرحلة:");
+        if (title) {
+            state.history.push({ id: 'p' + Date.now(), title: title, steps: [] });
+            renderHistory();
+            autoSync();
+        }
+    }
+
+    function deletePhase(id) {
+        state.history = state.history.filter(p => p.id !== id);
+        renderHistory();
+        autoSync();
+    }
+
+    function addStep(phaseId) {
+        const title = prompt("عنوان الخطوة:");
+        if (title) {
+            const phase = state.history.find(p => p.id === phaseId);
+            if (phase) {
+                phase.steps.push({ id: 's' + Date.now(), title: title, tools: ["New Tool"], events: ["حدث 1", "حدث 2", "حدث 3", "حدث 4"] });
+                renderHistory();
+                autoSync();
+            }
+        }
+    }
+
+    function editPhase(id) {
+        const phase = state.history.find(p => p.id === id);
+        if (phase) {
+            const newTitle = prompt("العنوان الجديد للمرحلة:", phase.title);
+            if (newTitle) {
+                phase.title = newTitle;
+                renderHistory();
+                autoSync();
+            }
+        }
+    }
+
+    function editStep(phaseId, stepId) {
+        const phase = state.history.find(p => p.id === phaseId);
+        if (phase) {
+            const step = phase.steps.find(s => s.id === stepId);
+            if (step) {
+                const newTitle = prompt("العنوان الجديد للخطوة:", step.title);
+                if (newTitle) {
+                    step.title = newTitle;
+                    renderHistory();
+                    autoSync();
+                }
+            }
+        }
+    }
+
+    function deleteStep(phaseId, stepId) {
+        const phase = state.history.find(p => p.id === phaseId);
+        if (phase) {
+            phase.steps = phase.steps.filter(s => s.id !== stepId);
+            renderHistory();
+            autoSync();
+        }
+    }
+
+    // Initialize
+    loadState();
+    renderAll();
+</script>
 </body></html>
