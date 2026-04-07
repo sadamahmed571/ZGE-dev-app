@@ -173,9 +173,6 @@
 <div class="text-lg md:text-2xl font-black text-[#dbfcff] uppercase tracking-tighter">
                 مساحة <span class="text-[#00f0ff] drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]">زيرو قرافتي</span>
 </div>
-<div class="flex items-center gap-2 md:hidden">
-<button class="material-symbols-outlined text-[#00f0ff] p-2 hover:bg-[#00f0ff]/10 rounded-full transition-all" onclick="document.querySelector('aside').classList.toggle('translate-x-full')">menu</button>
-</div>
 </div>
 <nav class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 mobile-nav-scroll whitespace-nowrap">
 <a id="nav-doc" class="bg-[#00f0ff]/20 text-[#00f0ff] px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-[#00f0ff]/40 shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all duration-300 text-xs md:text-sm" href="#" onclick="switchTab('section-doc')">📜 الوثيقة</a>
@@ -193,50 +190,8 @@
 </div>
 </div>
 </header>
-<!-- SideNavBar -->
-<aside class="fixed right-0 top-0 h-full flex flex-col pt-32 md:pt-20 pb-4 z-40 bg-[#0b0e14]/90 md:bg-[#0b0e14]/40 backdrop-blur-2xl border-l border-[#00f0ff]/10 w-64 font-['Space_Grotesk'] text-sm tracking-wide rtl transition-transform duration-300 translate-x-full md:translate-x-0">
-<div class="px-6 py-4 mb-4 border-b border-[#00f0ff]/5">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-primary-container/20 border border-primary flex items-center justify-center overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="portrait of a futuristic strategic commander with digital HUD overlay cyber dark aesthetic cool cyan lighting 3d render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT1BGlMiNcSCMbGXeEWspIgzLXwIr07LrBL21pojU41MdLz5gWGgrWYZ9vWu445n2F5AHZyfWRKtGAowya4PH-CwuaYyyVnvWZyXpheY2kjIobJXX8u-RKZI4xi1Nw2brDxwqU7bRYFMkdkFnKSeZLw9zJFI5A6zq61Vd6Wjpfr7pnuvWp6IiHy-MEzupAgqY09lFUrVMeLX_rWbcJUTQ4Q_G2AXS_BBqDUrVFcKU910ZQ6P9BK5MI0Z0UDACpfeWatgARwJ8QVoQ"/>
-</div>
-<div>
-<p class="font-bold text-primary">ZGE القائد</p>
-<p class="text-[10px] text-primary/60">المستوى الاستراتيجي</p>
-</div>
-</div>
-</div>
-<nav class="flex-1 flex flex-col gap-1">
-<a class="flex items-center gap-4 px-6 py-3 text-[#dbfcff]/40 hover:bg-[#191c22]/50 transition-colors" href="#">
-<span class="material-symbols-outlined">account_tree</span>
-<span>الفهرس الشجري</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-3 text-[#dbfcff]/40 hover:bg-[#191c22]/50 transition-colors" href="#">
-<span class="material-symbols-outlined">lightbulb</span>
-<span>الأفكار العامة</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-3 text-[#dbfcff]/40 hover:bg-[#191c22]/50 transition-colors" href="#">
-<span class="material-symbols-outlined">psychology_alt</span>
-<span>العصف الذهني</span>
-</a>
-<a class="flex items-center gap-4 px-6 py-3 bg-[#00f0ff]/10 text-[#00f0ff] border-r-4 border-[#00fb40]" href="#">
-<span class="material-symbols-outlined">terminal</span>
-<span>التطوير النشط</span>
-</a>
-</nav>
-<div class="mt-auto px-6 pb-8 space-y-1">
-<a class="flex items-center gap-4 py-3 text-[#dbfcff]/40 hover:text-white transition-colors" href="#">
-<span class="material-symbols-outlined">tune</span>
-<span>الإعدادات</span>
-</a>
-<a class="flex items-center gap-4 py-3 text-[#dbfcff]/40 hover:text-red-400 transition-colors" href="#">
-<span class="material-symbols-outlined">logout</span>
-<span>تسجيل الخروج</span>
-</a>
-</div>
-</aside>
 <!-- Main Content Area -->
-<main class="md:mr-64 pt-32 md:pt-24 px-4 md:px-8 pb-12">
+<main class="pt-32 md:pt-24 px-4 md:px-8 pb-12">
 <!-- Tab 1: Sovereign Document -->
 <section id="section-doc" class="max-w-5xl mx-auto mb-16">
 <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-8">
@@ -551,8 +506,7 @@
         index: [
             { id: "1", title: "وحدة الرأس", code: "Header", children: [
                 { id: "1.1", title: "شريط التنقل", code: "Navbar", children: [] }
-            ] },
-            { id: "2", title: "الشريط الجانبي", code: "Sidebar", children: [] }
+            ] }
         ],
         sparks: [
             { id: Date.now(), text: "تحسين استجابة الرسوم البيانية", done: false }
